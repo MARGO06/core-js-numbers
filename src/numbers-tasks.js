@@ -252,9 +252,9 @@ function toNumber(value, def) {
     if (Number.isNaN(result) === false) {
       return result;
     }
-    if (Number instanceof Number === true) {
-      return value;
-    }
+  }
+  if (value instanceof Number === true) {
+    return value.valueOf();
   }
   return def;
 }
@@ -675,11 +675,11 @@ function getHypotenuse(a, b) {
 function getCountOfOddNumbers(number) {
   let sum = 0;
   for (let i = 0; i <= number; i += 1) {
-    if (i % 2 !== 0) {
-      sum = +1;
+    if (i % 2 === 0) {
+      sum += 1;
     }
   }
-  return sum;
+  return number + 1 - sum;
 }
 
 module.exports = {
