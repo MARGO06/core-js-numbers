@@ -87,13 +87,7 @@ function getDistanceBetweenPoints(x1, y1, x2, y2) {
  *   5*x = 0         => 0
  */
 function getLinearEquationRoot(a, b) {
-  let result;
-  if (a + b) {
-    result = -b / a;
-  } else {
-    result = b / a;
-  }
-  return result;
+  return a + b ? -b / a : b / a;
 }
 
 /**
@@ -134,14 +128,7 @@ function getAngleBetweenVectors(x1, y1, x2, y2) {
  *     0     => 0
  */
 function getLastDigit(value) {
-  let result;
-  if (value > 9) {
-    const newNumber = value % 10;
-    result = newNumber;
-  } else if (value <= 9) {
-    result = value;
-  }
-  return result;
+  return value > 9 ? value % 10 : value;
 }
 
 /**
@@ -350,11 +337,8 @@ function getSumOfDigits(num) {
  *   15  => false
  */
 function isPowerOfTwo(num) {
-  const power = Math.log(num);
-  if (power === 0) {
-    return true;
-  }
-  return false;
+  const power = Math.log2(num);
+  return Number.isInteger(power) ? 1 : 0;
 }
 
 /**
@@ -461,10 +445,7 @@ function getNumberValue(number) {
  * '5'      => false
  */
 function isNumber(number) {
-  if (Number.isFinite(number)) {
-    return true;
-  }
-  return false;
+  return Number.isFinite(number) ? 1 : 0;
 }
 
 /**
@@ -479,10 +460,7 @@ function isNumber(number) {
  * '5'  => false
  */
 function isInteger(number) {
-  if (Number.isInteger(number)) {
-    return true;
-  }
-  return false;
+  return Number.isInteger(number) ? 1 : 0;
 }
 
 /**
@@ -529,10 +507,7 @@ function getIntegerOnString(str, base) {
  * 2 ** 53  => false
  */
 function isSafeInteger(number) {
-  if (Number.isSafeInteger(number)) {
-    return true;
-  }
-  return false;
+  return Number.isSafeInteger(number) ? 1 : 0;
 }
 
 /**
@@ -653,10 +628,7 @@ function getRandomInteger(min, max) {
  */
 function getHypotenuse(a, b) {
   const sumOfSides = Math.hypot(a, b);
-  if (sumOfSides !== Infinity) {
-    return sumOfSides;
-  }
-  return Number.MAX_VALUE;
+  return sumOfSides !== Infinity ? sumOfSides : Number.MAX_VALUE;
 }
 
 /**
@@ -674,12 +646,12 @@ function getHypotenuse(a, b) {
  */
 function getCountOfOddNumbers(number) {
   let sum = 0;
-  for (let i = 0; i <= number; i += 1) {
-    if (i % 2 === 0) {
+  for (let i = 1; i <= Math.abs(number); i += 1) {
+    if (i % 2 === 1) {
       sum += 1;
     }
   }
-  return number + 1 - sum;
+  return sum;
 }
 
 module.exports = {
